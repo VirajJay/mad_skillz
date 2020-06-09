@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head><title>FIT3140 First Assignment</title></head>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+  </script>
+  
+  <script>var socket=io();
+  var long_motion=0;
+  var short_motion=0;
+  var tot_motion=0;
+	socket.on('message', function(data){
+    if (data=="LONG"){
+      long_motion=long_motion+1;
+      document.getElementById('lng_motions').innerHTML=long_motion;
+    }
+    else if (data=="SHORT"){
+      short_motion=short_motion+1;
+      document.getElementById('shrt_motions').innerHTML=short_motion;   
+    }
+    else{
+      tot_motion=tot_motion+1;
+      document.getElementById('motion_num').innerHTML=tot_motion;
+    }
+	});
+	function led_toggle(){
+      socket.emit('led_toggle', document.getElementById('led_status').checked);};
+
+  function snsr_toggle(){
+      socket.emit('snsr_toggle', document.getElementById('snsr_status').checked);};
+
+  </script>
+	<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 30%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+        
+    }
+    </style>
+  <body>
+  <h1>Welcome to our FIT3140 First Assignment!!!!</h1>
+	<h1 align="center">IOT Control Panel</h1>
+	    <table align="center">
+        <tr>
+	      <th >Switch LED On/Off</th>
+          <th><input type="checkbox" id="led_status" onchange="led_toggle();"></input></th>
+        </tr>
+        <tr>
+	      <th>Switch Motion Sensor On/Off</th>
+          <th><input type="checkbox" id="snsr_status" onchange="snsr_toggle();"></button></th>
+        </tr>
+        <tr>
+	      <th>Motions Detected</th>
+          <th><output type="number" id="motion_num"></output></th>
+        </tr>
+        <tr>
+	      <th>Long Motion</th>
+          <th><output type="number" id="lng_motions"></output></th>
+        </tr>
+        <tr>
+	      <th>Short Motion</th>
+          <th><output type="number" id="shrt_motions"></output></th>
+        </tr>
+    </table> 
+  </body>
+</html>

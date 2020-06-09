@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+</head>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 30%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+        
+    }
+    </style>
+<body>
+        <h1>Welcome to our FIT3140 Second Assignment!!!!</h1>
+      
+        <h3>LED On/Off:</h3>
+
+        
+        <input id="light"  type="checkbox" onchange="LEDtoggle();">
+
+        <h3>Switch Motion Sensor On/Off:</h3>
+        <input id="mtn_snsr" type="checkbox" onchange="PIRtoggle();">
+  
+
+       
+
+        <h3>Reset</h3>
+        <input id="rstswitch" type="checkbox" onchange="RST();">        
+
+        <p><br></p>
+        <!--Total count of short motion-->
+        <div style="width:60%;Text-align:left;float:left;">Short Motions: </div>
+        <div id = 'dtctedshrtmtns' style="Text-align:left; width:70%; float:left"></div>
+
+       <p><br></p>
+       <!--Total count of long motions-->
+        <div style="width:60%;Text-align:left;float:left;">Long Motions: </div>
+        <div id = 'dtctedlngmtns' style="Text-align:left; width:70%; float:left"></div>
+
+        <p><br></p>
+        <!--Total count of motions-->
+        <div style="width:60%;Text-align:left;float:left;">Total Motions Detected: </div>
+        <div id = 'dtctedmtns' style="Text-align:left; width:70%; float:left"></div>
+
+        <p><br></p>
+       <!--Total count of intruders-->
+        <div style="width:60%;Text-align:left;float:left;">Total Intruder Count: </div>
+        <div id = 'int_cnt' style="Text-align:left; width:70%; float:left"></div>
+  <!--Begin-->
+<script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+
+  <!--End-->
+
+  <script src="./client.js"></script>
+</body>
+</html>
